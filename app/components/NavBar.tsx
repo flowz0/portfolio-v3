@@ -5,7 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
-const NavigationBar = () => {
+const NavBar = () => {
   const Links = [
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
@@ -17,7 +17,6 @@ const NavigationBar = () => {
 
   return (
     <nav className="bg-white text-black h-16 fixed w-full z-50">
-
       <div className="px-6 flex justify-between items-center h-full max-w-6xl mx-auto">
         <Link
           href="/"
@@ -35,7 +34,7 @@ const NavigationBar = () => {
                 className={`${pathname === link.href
                   ? "text-sky-500"
                   : "hover:text-sky-600"
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
@@ -87,7 +86,8 @@ const NavigationBar = () => {
                     className={`${pathname === link.href
                       ? "text-sky-500"
                       : "hover:text-sky-600"
-                    }`}
+                      }`}
+                      onClick={() => setIsOpen(!isOpen)}
                   >
                     {link.name}
                   </Link>
@@ -97,9 +97,8 @@ const NavigationBar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
     </nav>
   );
 };
 
-export default NavigationBar;
+export default NavBar;
